@@ -95,18 +95,25 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': DB_NAME,
+#         'USER': DB_USER,
+#         'PASSWORD': token,
+#         'HOST': DB_HOST,
+#         'PORT': DB_PORT,
+#         'OPTIONS': {'ssl': {'key': 'global-bundle.pem'}}
+#     }
+# }
+
+# SQLite Database 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': DB_NAME,
-        'USER': DB_USER,
-        'PASSWORD': token,
-        'HOST': DB_HOST,
-        'PORT': DB_PORT,
-        'OPTIONS': {'ssl': {'key': 'global-bundle.pem'}}
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

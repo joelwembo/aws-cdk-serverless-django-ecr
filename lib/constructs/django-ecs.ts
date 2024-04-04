@@ -173,12 +173,17 @@ export class DjangoECS extends Construct {
         });
 
         // ELB
+        // const serverCertificate = new aws_certificatemanager.Certificate(this, 'server-certificate', {
+        //     domainName: djangoDomain,
+        //     validation: aws_certificatemanager.CertificateValidation.fromDns(aws_route53.HostedZone.fromHostedZoneAttributes(this, 'server-zone', {
+        //         hostedZoneId: buildConfig.Parameters.PERSONAL_HOSTED_ZONE_ID,
+        //         zoneName: buildConfig.Parameters.PERSONAL_HOSTED_ZONE_DOMAIN
+        //     }))
+        // })
+
         const serverCertificate = new aws_certificatemanager.Certificate(this, 'server-certificate', {
             domainName: djangoDomain,
-            validation: aws_certificatemanager.CertificateValidation.fromDns(aws_route53.HostedZone.fromHostedZoneAttributes(this, 'server-zone', {
-                hostedZoneId: buildConfig.Parameters.PERSONAL_HOSTED_ZONE_ID,
-                zoneName: buildConfig.Parameters.PERSONAL_HOSTED_ZONE_DOMAIN
-            }))
+            validation: aws_certificatemanager.CertificateValidation.fromEmail()
         })
 
         const lbSg = new aws_ec2.SecurityGroup(this, 'lb-open-sg', {
