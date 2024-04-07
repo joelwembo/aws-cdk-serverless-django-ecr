@@ -19,3 +19,4 @@ USER app
 
 ADD --chown=app:app . /code/
 WORKDIR /code/mysite
+
